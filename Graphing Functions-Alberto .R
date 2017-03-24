@@ -1,6 +1,9 @@
 #Graphing Functions: Alberto Guzman-Alvarez
 
 
+
+
+
 #make sure things come in as factor
 
 
