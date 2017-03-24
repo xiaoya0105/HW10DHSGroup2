@@ -6,9 +6,9 @@ install.packages("stringi")
 library("stringi")
 
 # 1 FamilyID and number of people in each family
-CaseNumberinGroup<-function(dataset,group){
-  dat2<-group_by_(dataset,group)
-  newdata<-summarise(dataset, nClients=n())
+PeopleinCase<-function(datasetname,groupname){
+  dat2<-group_by_(datasetname,groupname)
+  newdata<-summarise(datasetname, nClients=n())
 }
 # test<-CaseNumberinGroup(dat2,"CaseID")
 
@@ -21,11 +21,11 @@ nService<-function(x,group){
 }
 # test<-nService(dat$MH1,dat$CaseID)
 
-# 3 number of times a family receiving CYF services (open times)
-nClosedate<-function(group,case,closedates){
+# 3 number of times a family receiving CYF service (close times include NA)
+nClosedate<-function(group,client,closedates){
   a<-stri_count_fixed(closedates, ",")+1
   a[which(is.na(a))]<-1
-  index<-ave(case,group,FUN=seq_along)
+  index<-ave(client,group,FUN=seq_along)
   output<-a[which(index==1)]
 }
 # test<-nClosedate(dat2$CaseID,dat2$CrossID,dat2$CloseDate)
