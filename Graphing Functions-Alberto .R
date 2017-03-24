@@ -1,6 +1,9 @@
 #Graphing Functions: Alberto Guzman-Alvarez
 
 
+
+
+
 #make sure things come in as factor
 
 
@@ -14,3 +17,9 @@ ScatterDotSize<-function(x, y, s){
 }
 
 ScatterDotSize(x,y,s)
+
+
+df <- read.table("ShortenClientsMerged.txt", header = TRUE)
+
+
+
