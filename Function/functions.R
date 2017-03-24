@@ -5,12 +5,15 @@ library("dplyr")
 install.packages("stringi")
 library("stringi")
 
+# dat<-read.table("ShortenClientsMerged.txt")
+# dat2<-arrange(dat2,CaseID,CrossID)
+
 # 1 FamilyID and number of people in each family
 PeopleinCase<-function(datasetname,groupname){
-  dat2<-group_by_(datasetname,groupname)
+  datasetname<-group_by_(datasetname,groupname)
   newdata<-summarise(datasetname, nClients=n())
 }
-# test<-CaseNumberinGroup(dat2,"CaseID")
+# test<-PeopleinCase(dat2,"CaseID")
 
 # 2 number of people recieving MH service in each family
 lengthnoNA<-function(x){
