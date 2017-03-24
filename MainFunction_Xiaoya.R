@@ -33,9 +33,13 @@ nClosedate<-function(group,client,closedates){
 }
 
 nClose<-nClosedate(dat$CaseID,dat$CrossID,dat$CloseDate)
+ratio<-round(nMH/nFamily[,2],2)
+ratio<-unname(unlist(ratio[,1]))
 
 # cbind the result 1,2 and 3 to create a new data frame. 
-newdat<-cbind(nFamily,nMH,nClose)
+newdat<-cbind(nFamily,nMH,nClose,ratio)
+
 write.csv(newdat,file = "newdat.csv")
+
 
 
