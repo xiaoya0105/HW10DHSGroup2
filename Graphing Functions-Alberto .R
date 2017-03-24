@@ -17,3 +17,9 @@ ScatterDotSize<-function(x, y, s){
 }
 
 ScatterDotSize(x,y,s)
+
+
+df <- read.table("ShortenClientsMerged.txt", header = TRUE)
+
+
+
