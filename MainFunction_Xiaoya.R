@@ -1,16 +1,41 @@
-dat<-read.table("ShortenClientsMerged.txt")
+#get ready
+install.packages("dplyr")
 library("dplyr")
-try<-arrange(dat,CaseID)
-try1<-data.frame(tapply(try$CrossID,try$CaseID,length))
+install.packages("stringi")
+library("stringi")
+dat<-read.table("ShortenClientsMerged.txt")
+dat<-arrange(dat,CaseID)
+
+# 1 FamilyID and number of people in each family
+PeopleinCase<-function(datasetname,groupname){
+  datasetname<-group_by_(datasetname,groupname)
+  newdata<-summarise(datasetname, nClients=n())
+}
+
+nFamily<-PeopleinCase(dat,"CaseID")
+
+# 2 number of people recieving MH service in each family
 lengthnoNA<-function(x){
   length(x[-which(is.na(x))])
 }
-try2<-data.frame(tapply(try$MH1,try$CaseID,lengthnoNA))
+nService<-function(x,group){
+  output<-tapply(x,group,lengthnoNA)
+}
 
-t<-merge(try1,try2)
-try1<-rownames_to_column(try1,var="CaseID")
-try2<-rownames_to_column(try2,var="CaseID")
+nMH<-nService(dat$MH1,dat$CaseID)
 
+# 3 number of times a family receiving CYF service (close times include NA)
+nClosedate<-function(group,client,closedates){
+  a<-stri_count_fixed(closedates, ",")+1
+  a[which(is.na(a))]<-1
+  index<-ave(client,group,FUN=seq_along)
+  output<-a[which(index==1)]
+}
 
+nClose<-nClosedate(dat$CaseID,dat$CrossID,dat$CloseDate)
+
+# cbind the result 1,2 and 3 to create a new data frame. 
+newdat<-cbind(nFamily,nMH,nClose)
+write.csv(newdat,file = "newdat.csv")
 
 
