@@ -1,31 +1,36 @@
-dat<-read.table("ShortenClientsMerged.txt")
+# arrange data first, then do not sort at the process
 
-# Number of people with mental health in each family
-# Number of people in the family
+install.packages("dplyr")
+library("dplyr")
+install.packages("stringi")
+library("stringi")
+
+# 1 FamilyID and number of people in each family
+CaseNumberinGroup<-function(dataset,group){
+  dat2<-group_by_(dataset,group)
+  newdata<-summarise(dataset, nClients=n())
+}
+# test<-CaseNumberinGroup(dat2,"CaseID")
+
+# 2 number of people recieving MH service in each family
 lengthnoNA<-function(x){
   length(x[-which(is.na(x))])
 }
-AggregateByCase<-function(group,x){
+nService<-function(x,group){
   output<-tapply(x,group,lengthnoNA)
-  data.frame(output)
 }
+# test<-nService(dat$MH1,dat$CaseID)
 
-<<<<<<< HEAD
-# Number of people in the family (number of clients in each case
-Casemember<-function(group,x){
-  count<-tapply(x,group,length)
+# 3 number of times a family receiving CYF services (open times)
+nClosedate<-function(group,case,closedates){
+  a<-stri_count_fixed(closedates, ",")+1
+  a[which(is.na(a))]<-1
+  index<-ave(case,group,FUN=seq_along)
+  output<-a[which(index==1)]
 }
-=======
-# Close times. 
-install.packages("stringi")
-library("stringi")
-countclosedate<-function(closedate){
-  output<-str_count(x,",")
-}
-<<<<<<< HEAD
+# test<-nClosedate(dat2$CaseID,dat2$CrossID,dat2$CloseDate)
 
-# Put in number
+# cbind the result 1,2 and 3 to create a new data frame. 
 
-=======
->>>>>>> c6f3205c7e83c6b4332a6c78063d509083e8a898
->>>>>>> 75cb0812a1e79bb42fb8974564ac9a84a057fa5b
+
+
