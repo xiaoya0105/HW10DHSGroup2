@@ -11,7 +11,7 @@ Goal: reads in ShortenClientMerged.txt, then construct a "time-series" graph whe
 
 Data cleaning functions:  #Jia Yang
 Goal: Create functions for x,y,z
-x: number of people receiving Mental Health Service in each family
+x: ratio of number of people receiving Mental Health Service in each family (# of mental health service/# of family members)
 y: number of case close time in each family
 z: number of people in each family (which is the # of clients in each case)
 
