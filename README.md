@@ -16,5 +16,5 @@ y: number of case close time in each family
 z: number of people in each family (which is the # of clients in each case)
 
 Graphing functions: #Alberto
-Goal: scatterplot with a smoothing regression line. Consider fractional on the x axis for mental health services, and y is # of cases 
+Goal: scatterplot with a smoothing regression line. Consider fractional on the x axis for mental health services, and y is # of cases. Dot Size 
 
