@@ -9,4 +9,7 @@ AggregateByCase<-function(group,x){
 }
 # Close times. 
 
-# Number of people in the 
+# Number of people in the family (number of clients in each case
+Casemember<-function(group,x){
+  count<-tapply(x,group,length)
+}
