@@ -10,5 +10,5 @@ Main function: #Xiaoya
 Goal: reads in ShortenClientMerged.txt, then construct a "time-series" graph where the x axis is ratio of people who received mental health in one famile (each CaseID) (for now assume the case # is assigned chronologically) and the y axis is the number of open and closing times of each case. Will do so by calling AggregateByCase and send its output to PlotByTime for a scatter plot. 
 
 Graphing functions: #Alberto
-Goal: scatterplot with a smoothing regression line. Consider fractional on the x axis for mental health services, and y is # of cases 
+Goal: scatterplot with a smoothing regression line. Consider fractional on the x axis for mental health services, and y is # of cases. Dot Size 
 
