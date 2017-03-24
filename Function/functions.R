@@ -16,3 +16,6 @@ library("stringi")
 countclosedate<-function(closedate){
   output<-str_count(x,",")
 }
+
+# Put in number
+
