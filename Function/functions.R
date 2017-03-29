@@ -33,7 +33,9 @@ nClosedate<-function(group,client,closedates){
 }
 # test<-nClosedate(dat2$CaseID,dat2$CrossID,dat2$CloseDate)
 
-# cbind the result 1,2 and 3 to create a new data frame. 
+#4
+ratio<-a/b
+# cbind or data.frame the result 1,2 and 3 to 4 create a new data frame. 
 
 
 
