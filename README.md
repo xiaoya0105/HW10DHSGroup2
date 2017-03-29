@@ -7,7 +7,7 @@ Research Question: Is there relationship between the number of people receiving 
 Why is it important: This is usefule because it will allow DHS to know the realtionship between receiving mental health services and the number of times they open/closed a case. For example, if someone in the family is getting mental health services they may be more likely to have more visits with DHS.
 
 Main function: #Xiaoya
-Goal: reads in ShortenClientMerged.txt, then construct a "time-series" graph where the x axis is ratio of people who received mental health in one famile (each CaseID) (for now assume the case # is assigned chronologically) and the y axis is the number of open and closing times of each case. Will do so by calling AggregateByCase and send its output to PlotByTime for a scatter plot. 
+Goal: reads in ShortenClientMerged.txt, then construct a "time-series" graph where the x axis is number of people who received mental health in one family (each CaseID) and the y axis is the number of open and closing times of each case. Will do so by calling PeopleinCase,nService and nClosedate and then cind them together as a dataset and send its output to ScatterDotSize for a scatter plot. 
 
 Data cleaning functions:  #Jia Yang
 Goal: Create functions for x,y,z
