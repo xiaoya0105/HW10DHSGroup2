@@ -40,5 +40,16 @@ newdat<-mutate(newdat,ratio=round(nMH/nClients,2))
 
 write.csv(newdat,file = "newdat.csv")
 
-
+#graphing
+ScatterDotSize<-function(x, y, s, n){ #n is the name of dataset
+  library(ggplot2)
+  ggplot(aes(x=x, y=y), data = n) +
+    geom_point(aes(size=s)) +
+    geom_smooth(method=lm) + # Add linear regression line 
+    geom_jitter()
+}
+#number of MH
+ScatterDotSize(newdat$nMH,newdat$nClose,newdat$nClients, newdat)
+#ratio of MH
+ScatterDotSize(newdat$ratio,newdat$nClose,newdat$nClients, newdat)
 

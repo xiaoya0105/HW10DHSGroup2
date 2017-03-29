@@ -1,25 +1,31 @@
 #Graphing Functions: Alberto Guzman-Alvarez
 
+#calling in data
+library(readr)
+dat <- read_csv("~/HW10DHSGroup2/newdat.csv")
+View(dat)
 
 
-
-
-#make sure things come in as factor
-
-
-#this will need to take in size
-ScatterDotSize<-function(x, y, s){
+ScatterDotSize<-function(x, y, s, n){ #n is the name of dataset
   library(ggplot2)
-  ggplot(aes(x=x, y=y)) +
-    geom_point(shape=1, size=s) +    # Use hollow circles
-    geom_smooth(method=lm) +  # Add linear regression line 
-    scale_size(range = c(2, 10))
+  ggplot(aes(x=x, y=y), data = n) +
+    geom_point(aes(size=s)) +
+    geom_smooth(method=lm) + # Add linear regression line 
+    geom_jitter()
 }
 
-ScatterDotSize(x,y,s)
 
-
-df <- read.table("ShortenClientsMerged.txt", header = TRUE)
+ScatterDotSize(dat$nMH,dat$nClose,dat$nClients, dat)
 
 
 
+#use this code for our specific graph, uses labels 
+
+library(ggplot2)
+ggplot(aes(dat$nMH,dat$nClose), data = dat) +
+  geom_point(aes(size=dat$nClients)) +    # Use hollow circles
+  geom_smooth(method=lm) +  # Add linear regression line 
+  geom_jitter() +
+  xlab("Number of MH Services") +
+  ylab("Number of Closed Cases") +
+  ggtitle("Number of DHS Mental Health Services by Number of Closed Case Dates")
