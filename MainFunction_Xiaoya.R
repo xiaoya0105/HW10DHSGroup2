@@ -48,7 +48,8 @@ ScatterDotSize<-function(x, y, s, n){ #n is the name of dataset
     geom_smooth(method=lm) + # Add linear regression line 
     geom_jitter()
 }
-
+#number of MH
 ScatterDotSize(newdat$nMH,newdat$nClose,newdat$nClients, newdat)
-
+#ratio of MH
+ScatterDotSize(newdat$ratio,newdat$nClose,newdat$nClients, newdat)
 
