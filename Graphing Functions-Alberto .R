@@ -1,25 +1,23 @@
 #Graphing Functions: Alberto Guzman-Alvarez
 
+#calling in data
+library(readr)
+dat <- read_csv("~/HW10DHSGroup2/newdat.csv")
+View(dat)
 
 
-
-
-#make sure things come in as factor
-
-
-#this will need to take in size
 ScatterDotSize<-function(x, y, s){
+  df <- data.frame(x,y,s) #ggplot needs to have an df input, so creating the dataframe inside the function
   library(ggplot2)
-  ggplot(aes(x=x, y=y)) +
-    geom_point(shape=1, size=s) +    # Use hollow circles
+  ggplot(aes(x=x, y=y), data = df) +
+    geom_point(aes(size=s)) +    # Use hollow circles
     geom_smooth(method=lm) +  # Add linear regression line 
-    scale_size(range = c(2, 10))
+    geom_jitter()
 }
 
-ScatterDotSize(x,y,s)
 
+ScatterDotSize(dat$nMH,dat$nClose,dat$nClients)
 
-df <- read.table("ShortenClientsMerged.txt", header = TRUE)
 
 
 
